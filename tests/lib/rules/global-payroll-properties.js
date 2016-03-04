@@ -51,7 +51,7 @@ function generateInvalidExamples(props) {
     {
       code,
       options,
-      errors: [{ message: `Must import/require Payroll property '${expr}'.`, type: type}]
+      errors: [{message: `Must import/require Payroll property '${expr}'.`, type: type}]
     }
   ));
 }
@@ -68,5 +68,10 @@ ruleTester.run('global-payroll-properties', rule, {
     'Models',
     'Collections.Things',
     'Views.SomeView'
+  ]).concat([
+    {
+      code: 'someFunc(Payroll.Models.Company);',
+      errors: [{message: "Must import/require Payroll property 'Payroll.Models.Company'.", type: 'Identifier'}]
+    }
   ])
 });

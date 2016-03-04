@@ -23,12 +23,13 @@ function getRootMemberExpression(node) {
 }
 
 function globalPayrollProperties(context) {
-  const config = context.options[0] || {};
+  const exceptions = (context.options[0] || {}).exceptions || [];
+
   return {
     'MemberExpression': function(node) {
       if (isIdentifier(node.object, 'Payroll')) {
         const propertyName = getPropertyName(node);
-        if (config.exceptions.indexOf(propertyName) < 0) {
+        if (exceptions.indexOf(propertyName) < 0) {
           const fullProperty = context.getSourceCode().getText(getRootMemberExpression(node));
           context.report({
             node: node.property,
