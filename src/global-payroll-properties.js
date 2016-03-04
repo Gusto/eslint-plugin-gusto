@@ -22,7 +22,7 @@ function getRootMemberExpression(node) {
   return node;
 }
 
-export default function(context) {
+function globalPayrollProperties(context) {
   const config = context.options[0] || {};
   return {
     'MemberExpression': function(node) {
@@ -39,3 +39,20 @@ export default function(context) {
     }
   };
 }
+
+globalPayrollProperties.schema = [
+  {
+    'type': 'object',
+    'properties': {
+      'exceptions': {
+        'type': 'array',
+        'items': {
+          'type': 'string'
+        }
+      }
+    },
+    'additionalProperties': false
+  }
+];
+
+export default globalPayrollProperties;
