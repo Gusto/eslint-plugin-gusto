@@ -90,6 +90,13 @@ ruleTester.run('string-literal-blacklist', rule, {
       env: {
         es6: true
       }
+    },
+    {
+      code: `const src = /$image_path/g;`,
+      options,
+      env: {
+        es6: true
+      }
     }
   ],
   invalid: [

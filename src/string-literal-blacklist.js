@@ -19,9 +19,11 @@ function stringLiteralBlacklist(context) {
 
   return {
     'Literal': function(node) {
-      const match = blacklistMatch(node.value);
-      if (match) {
-        report(match, node);
+      if (typeof node.value === 'string') {
+        const match = blacklistMatch(node.value);
+        if (match) {
+          report(match, node);
+        }
       }
     },
     'TemplateElement': function(node) {
