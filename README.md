@@ -67,9 +67,52 @@ const company = Payroll.Store.company;
 ### Rule Options
 
 ```js
-"display-name": [2, {"exceptions": <array of strings>}]
+"global-payroll-properties": [2, {"exceptions": <array of strings>}]
 ```
 
 #### `exceptions`
 
 Array of property names that are permitted to be used on the global `Payroll` object.
+
+
+## Prevent strings from being used in string literals (string-literal-blacklist)
+
+This rule allows you to configure a blacklist of strings that should not be used in your code.
+
+### Rule Details
+
+The following patterns are considered warnings:
+
+```js
+/*eslint string-literal-blacklist: [2, "$image_path("]*/
+
+const img = <img src='$image_path(some/where/image.png)' />;
+
+const img = <img src={`$image_path(some/where/image.png)`} />;
+
+const src = "$image_path(some/where/image.png)";
+
+const src = `$image_path(some/where/image.png)`;
+```
+
+The following patterns are not considered warnings:
+
+```js
+/*eslint string-literal-blacklist: [2, "$image_path("]*/
+
+const img = <img src='some/where/image.png' />;
+
+const img = <img src={`some/where/image.png`} />;
+
+const src = "some/where/image.png";
+
+const src = `some/where/image.png`;
+```
+
+### Rule Options
+
+This rule needs set of strings to blacklist, listed after the warning level:
+
+```js
+"string-literal-blacklist": [2, <array of strings>]
+```
