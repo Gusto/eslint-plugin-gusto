@@ -51,7 +51,7 @@ module.exports = {
     // disallow else after a return in an if
     'no-else-return': 0,
     // disallow use of empty functions
-    'no-empty-function': 2,
+    'no-empty-function': 0,
     // disallow comparisons to null without a type-checking operator
     'no-eq-null': 2,
     // disallow use of eval()
@@ -101,7 +101,7 @@ module.exports = {
     // disallow usage of __proto__ property
     'no-proto': 2,
     // disallow use of assignment in return statement
-    'no-return-assign': 2,
+    'no-return-assign': 0,
     // disallow use of javascript: urls.
     'no-script-url': 0,
     // disallow comparisons where both sides are exactly the same
