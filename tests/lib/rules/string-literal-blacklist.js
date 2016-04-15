@@ -6,7 +6,13 @@ const options = [
   'somethingelse'
 ];
 
-const ruleTester = new RuleTester();
+const ruleTester = new RuleTester({
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true
+    }
+  }
+});
 ruleTester.run('string-literal-blacklist', rule, {
   valid: [
     {
