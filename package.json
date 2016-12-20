@@ -1,10 +1,9 @@
 {
-  "name": "eslint-plugin-gusto",
-  "version": "1.0.0",
+  "name": "@gusto/eslint-plugin-gusto",
+  "version": "1.1.0",
   "description": "Custom Gusto ESLint rules",
   "repository": "Gusto/eslint-plugin-gusto",
   "main": "lib/index.js",
-  "private": true,
   "license": "UNLICENSED",
   "scripts": {
     "test": "mocha --compilers js:babel-register tests/**/*.js",
