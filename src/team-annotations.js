@@ -12,7 +12,7 @@ function teamAnnotations(context) {
   }
 
   function isValidMission(missionTag) {
-    return missions.includes(missionTag.value.match(MISSION_REGEX)[1]);
+    return missions.indexOf(missionTag.value.match(MISSION_REGEX)[1]) >= 0;
   }
 
   const TEAM_REGEX = / @team ([\w| ]*)/;
@@ -23,7 +23,7 @@ function teamAnnotations(context) {
   }
 
   function isValidTeam(teamTag) {
-    return teams.includes(teamTag.value.match(TEAM_REGEX)[1]);
+    return teams.indexOf(teamTag.value.match(TEAM_REGEX)[1]) >= 0;
   }
 
   return {
