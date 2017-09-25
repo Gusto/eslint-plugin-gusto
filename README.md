@@ -2,21 +2,32 @@
 
 A shared ESLint config for Gusto's JS projects.
 
-## Usage
+# Full config
 
-There are three ESLint config available. All three require `eslint` and `babel-eslint`.
+The default config contains all defined rules including ES6 and React.
 
-### eslint-config-gusto
+Install dependencies:
 
-The default config contains all defined rules, including ES6 and React. It requires
-`eslint-plugin-react`.
+```sh
+yarn add --dev \
+  "@gusto/eslint-config-gusto@^7.0.0" \
+  "babel-eslint@^7.2.2" \
+  "eslint@^3.19.0" \
+  "eslint-plugin-import@^2.7.0" \
+  "eslint-plugin-jsx-a11y@^5.0.3" \
+  "eslint-plugin-react@^7.4.0"
+```
 
-1. `npm install --save-dev gusto/eslint-config-gusto eslint babel-eslint eslint-plugin-react`
-2. Add `"extends": "gusto"` to your `.eslintrc` file
+Extend the Gusto config in your ESLint config:
 
-### eslint-config-gusto/base
+```js
+// .eslintrc.js
 
-The base config contains only rules for ES6 (without React).
+module.exports = {
+  extends: '@gusto/eslint-config-gusto'
+}
+```
 
-1. `npm install --save-dev gusto/eslint-config-gusto eslint babel-eslint`
-2. Add `"extends": "gusto/base"` to your `.eslintrc` file
+# Base config
+
+The base config contains only rules for ES6 (without React). It is currently not functional.

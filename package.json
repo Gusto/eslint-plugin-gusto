@@ -1,7 +1,7 @@
 {
   "name": "@gusto/eslint-config-gusto",
-  "version": "7.0.0",
-  "description": "Gusto shared ESLint config",
+  "version": "7.0.1",
+  "description": "A shared ESLint config for Gusto's JS projects",
   "main": "index.js",
   "author": "Rylan Collins <rylan@gusto.com>",
   "repository": {
@@ -15,16 +15,16 @@
   },
   "devDependencies": {
     "babel-eslint": "^7.2.2",
-    "eslint": "3.19.0",
-    "eslint-plugin-import": "2.2.0",
-    "eslint-plugin-jsx-a11y": "5.0.1",
-    "eslint-plugin-react": "7.0.1"
+    "eslint": "^3.19.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^5.0.3",
+    "eslint-plugin-react": "^7.0.1"
   },
   "peerDependencies": {
-    "babel-eslint": "^7.2",
+    "babel-eslint": "^7.2.2",
     "eslint": "^3.19.0",
-    "eslint-plugin-jsx-a11y": "^5.0.3",
     "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^5.0.3",
     "eslint-plugin-react": "^7.0.1"
   },
   "dependencies": {
