@@ -13,6 +13,9 @@ module.exports = {
         optionalDependencies: false,
       },
     ],
+    // rule deprecated in favor of jsx-a11y/label-has-associated-control
+    'jsx-a11y/label-has-for': false,
+    'react/destructuring-assignment': false,
   },
 
   settings: {
