@@ -31,6 +31,24 @@ Add `plugins` section to your `.eslintrc` and add the Gusto plugin:
 
 Then enable all of the rules that you would like to use.
 
+# Contribution
+
+- Write your rule in `src/`.
+- Add the rule to `src/index.js`.
+- Write a test in `test/lib/rules/`.
+- Build files to `lib/` using `yarn build`.
+- Get a review
+- Land
+- Publish (instructions \[TODO\])
+
+# TODO
+
+- Write publish instructions in `README.md`
+- Can `$image_path` rule be removed from ZP?
+- Re-write rules in non-deprecated format (note at top of https://eslint.org/docs/developer-guide/working-with-rules)
+- Move detailed rule descriptions into their own `.md` files and link from the main `README.md`
+- Create a buildkite pipeline so it runs tests and auto-publishes?
+
 # Rules
 
 ## Prevent usage of properties of the global `Payroll` object (global-payroll-properties)
@@ -73,7 +91,6 @@ const company = Payroll.Store.company;
 #### `exceptions`
 
 Array of property names that are permitted to be used on the global `Payroll` object.
-
 
 ## Prevent strings from being used in string literals (string-literal-blacklist)
 
