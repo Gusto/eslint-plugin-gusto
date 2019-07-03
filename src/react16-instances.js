@@ -1,24 +1,23 @@
 // const fullProperty = context.getSourceCode().getText(node);
 
-export const REACTSUBCOMPONENTS_ERROR = `Accessing reactSubComponents is deprecated because it
-  will break in React 16. If you are writing a spec, spy on renderSubComponent instead.`;
 export const RENDERSUBCOMPONENT_RETURN_ERROR = `Using the instance returned by renderSubComponent
   is deprecated because it will break in React 16. If you need to read the state use callback props
   instead.`;
 
 export default function(context) {
   return {
-    MemberExpression: function(node) {
-      const prop = node.property;
-      if (prop.type !== 'Identifier' || prop.name !== 'reactSubComponents') {
-        return;
-      }
-
-      context.report({
-        node: node.property,
-        message: REACTSUBCOMPONENTS_ERROR
-      });
-    },
+    // We-written as `'no-restricted-properties': ... { property: 'reactSubComponents' }`
+    // MemberExpression: function(node) {
+    //   const prop = node.property;
+    //   if (prop.type !== 'Identifier' || prop.name !== 'reactSubComponents') {
+    //     return;
+    //   }
+    //   context.report({
+    //     node: node.property,
+    //     message: `Accessing reactSubComponents is deprecated because it will break in React 16.
+    //       If you are writing a spec, spy on renderSubComponent instead.`
+    //   });
+    // },
 
     CallExpression: function(node) {
       // The function being called must be 'renderSubComponent'. The parent must be an expression.
@@ -35,6 +34,7 @@ export default function(context) {
         });
       }
     }
+    
     // BROKEN VERSION left as an example. It only finds assignments. It fails to find returns, member access, etc.
     // AssignmentExpression: function(node) {
     //   const right = node.right;

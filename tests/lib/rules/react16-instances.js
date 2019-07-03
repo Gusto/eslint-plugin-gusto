@@ -1,22 +1,11 @@
 import { RuleTester } from 'eslint';
 import rule, {
-  REACTSUBCOMPONENTS_ERROR,
   RENDERSUBCOMPONENT_RETURN_ERROR
 } from '../../../src/react16-instances';
 
-const accessError = [{ message: REACTSUBCOMPONENTS_ERROR }];
 const instanceError = [{ message: RENDERSUBCOMPONENT_RETURN_ERROR }];
 
 const ruleTester = new RuleTester();
-ruleTester.run('react16-instances: reactSubComponents', rule, {
-  valid: [{ code: 'reactSubComponents;' }, { code: 'view.reactSubComponent;' }],
-  invalid: [
-    { code: 'view.reactSubComponents;', errors: accessError },
-    { code: 'view.reactSubComponents.map(callback);', errors: accessError },
-    { code: 'view.reactSubComponents[0];', errors: accessError }
-  ]
-});
-
 ruleTester.run('react16-instances: renderSubComponent return value', rule, {
   valid: [
     { code: 'some = thing()' },
