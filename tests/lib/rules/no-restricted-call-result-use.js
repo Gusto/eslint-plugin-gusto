@@ -31,6 +31,11 @@ ruleTester.run('no-restricted-call-result-use', rule, {
       code: '() => { thing(); };',
       options,
       env: { es6: true }
+    },
+    {
+      code: '() => thing();',
+      options,
+      env: { es6: true }
     }
   ],
   invalid: [
@@ -74,6 +79,12 @@ ruleTester.run('no-restricted-call-result-use', rule, {
     // Member Access
     {
       code: 'view.fetch(something).someMember;',
+      options,
+      errors: instanceError
+    },
+    {
+      code: 'const {someMember} = view.fetch(something);',
+      env: { es6: true },
       options,
       errors: instanceError
     },

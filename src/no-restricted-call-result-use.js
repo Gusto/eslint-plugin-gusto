@@ -17,6 +17,9 @@ export default function(context) {
     restrictedCallReturnsMap.set(callName, {});
   });
 
+  // minor TODO: var some = new forbidden() is not prohibited currently.
+  // It is a "NewExpression" and not a "CallExpression"
+
   return {
     CallExpression: function(node) {
       // If the parent is an ExpressionStatement then the return value is not being used.
