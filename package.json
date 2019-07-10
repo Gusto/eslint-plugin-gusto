@@ -6,7 +6,7 @@
   "main": "lib/index.js",
   "license": "UNLICENSED",
   "scripts": {
-    "test": "mocha --compilers js:babel-register tests/**/*.js",
+    "test": "mocha --require babel-core/register tests/**/*.js",
     "build": "babel -d lib src",
     "lint": "eslint .",
     "lint-fix": "eslint --fix ."
@@ -18,6 +18,6 @@
     "babel-register": "^6.6.0",
     "eslint": "2.7.0",
     "eslint-config-gusto": "github:gusto/eslint-config-gusto#v2.1",
-    "mocha": "^5.2.0"
+    "mocha": "^6.1.4"
   }
 }
