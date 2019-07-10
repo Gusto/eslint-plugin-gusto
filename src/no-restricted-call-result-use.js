@@ -35,10 +35,6 @@ export default function(context) {
       // If the parent is an ExpressionStatement then the return value is not being used.
       // If it is anything else (I think) then the return value is being used. More testing may be
       // required.
-      //
-      // examples:
-      // `dontUseMyReturn();`      OK!  [ExpressionStatement]
-      // return dontUseMyReturn(); BAD! [ReturnStatement]
       if (node.parent.type === 'ExpressionStatement') {
         return;
       }
@@ -62,31 +58,3 @@ export default function(context) {
     }
   };
 }
-
-// This piece re-written as `'no-restricted-properties': ... { property: 'reactSubComponents' }`
-// MemberExpression: function(node) {
-//   const prop = node.property;
-//   if (prop.type !== 'Identifier' || prop.name !== 'reactSubComponents') {
-//     return;
-//   }
-//   context.report({
-//     node: node.property,
-//     message: `Accessing reactSubComponents is deprecated because it will break in React 16.
-//       If you are writing a spec, spy on renderSubComponent instead.`
-//   });
-// },
-
-// A BROKEN VERSION left as an example. It only finds assignments. It fails to find returns, member access, etc.
-// AssignmentExpression: function(node) {
-//   const right = node.right;
-//   if (
-//     right.type !== 'CallExpression' ||
-//     right.callee.property.name !== 'renderSubComponent'
-//   ) {
-//     return;
-//   }
-//   context.report({
-//     node: node,
-//     message: RENDERSUBCOMPONENT_RETURN_ERROR
-//   });
-// }
