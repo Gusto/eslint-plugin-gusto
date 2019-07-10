@@ -1,5 +1,4 @@
 eslint-plugin-gusto <img src="https://travis-ci.org/Gusto/eslint-plugin-gusto.svg?branch=master" />
-===================
 
 Custom Gusto ESLint rules.
 
@@ -23,9 +22,7 @@ Add `plugins` section to your `.eslintrc` and add the Gusto plugin:
 
 ```json
 {
-  "plugins": [
-    "gusto"
-  ]
+  "plugins": ["gusto"]
 }
 ```
 
@@ -37,8 +34,11 @@ Then enable all of the rules that you would like to use.
 - Add the rule to `src/index.js`.
 - Write a test in `test/lib/rules/`.
 - Build files to `lib/` using `yarn build`.
+- Run test with `yarn test`
+- Run lint with `yarn lint`
+- Create a PR
 - Get a review
-- Land
+- Squash & Merge
 - Publish (instructions \[TODO\])
 
 # TODO
@@ -47,7 +47,8 @@ Then enable all of the rules that you would like to use.
 - Can `$image_path` rule be removed from ZP?
 - Re-write rules in non-deprecated format (note at top of https://eslint.org/docs/developer-guide/working-with-rules)
 - Move detailed rule descriptions into their own `.md` files and link from the main `README.md`
-- Create a buildkite pipeline so it runs tests and auto-publishes?
+- Figure out why rule namespace is @gusto/gusto/...
+- Create a CI workflow to run tests (and auto-publish?)
 
 # Rules
 
@@ -103,11 +104,11 @@ The following patterns are considered warnings:
 ```js
 /*eslint string-literal-blacklist: [2, "$image_path("]*/
 
-const img = <img src='$image_path(some/where/image.png)' />;
+const img = <img src="$image_path(some/where/image.png)" />;
 
 const img = <img src={`$image_path(some/where/image.png)`} />;
 
-const src = "$image_path(some/where/image.png)";
+const src = '$image_path(some/where/image.png)';
 
 const src = `$image_path(some/where/image.png)`;
 ```
@@ -117,11 +118,11 @@ The following patterns are not considered warnings:
 ```js
 /*eslint string-literal-blacklist: [2, "$image_path("]*/
 
-const img = <img src='some/where/image.png' />;
+const img = <img src="some/where/image.png" />;
 
 const img = <img src={`some/where/image.png`} />;
 
-const src = "some/where/image.png";
+const src = 'some/where/image.png';
 
 const src = `some/where/image.png`;
 ```
