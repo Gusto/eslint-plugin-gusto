@@ -1,8 +1,6 @@
-// const fullProperty = context.getSourceCode().getText(node);
-
-export const RENDERSUBCOMPONENT_RETURN_ERROR = `Using the instance returned by renderSubComponent
-  is deprecated because it will break in React 16. If you need to read the state use callback props
-  instead.`;
+/**
+ * @author Mark Wheeler
+ */
 
 export default function(context) {
   const restrictedCallReturns = context.options;
@@ -13,15 +11,27 @@ export default function(context) {
 
   const restrictedCallReturnsMap = new Map();
 
-  restrictedCallReturns.forEach(callName => {
-    restrictedCallReturnsMap.set(callName, {});
+  restrictedCallReturns.forEach(callOption => {
+    if (typeof callOption === 'string') {
+      restrictedCallReturnsMap.set(
+        callOption,
+        `The result returned by '${callOption}' is restricted from being used.`
+      );
+    } else {
+      restrictedCallReturnsMap.set(
+        callOption.name,
+        `The result returned by '${
+          callOption.name
+        }' is restricted from being used. ${callOption.message}`
+      );
+    }
   });
 
   // minor TODO: var some = new forbidden() is not prohibited currently.
   // It is a "NewExpression" and not a "CallExpression"
 
   return {
-    CallExpression: function(node) {
+    CallExpression: node => {
       // If the parent is an ExpressionStatement then the return value is not being used.
       // If it is anything else (I think) then the return value is being used. More testing may be
       // required.
@@ -46,7 +56,7 @@ export default function(context) {
       if (anyMatch) {
         context.report({
           node: node,
-          message: RENDERSUBCOMPONENT_RETURN_ERROR
+          message: anyMatch
         });
       }
     }

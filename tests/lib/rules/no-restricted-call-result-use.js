@@ -1,11 +1,21 @@
 import { RuleTester } from 'eslint';
-import rule, {
-  RENDERSUBCOMPONENT_RETURN_ERROR
-} from '../../../src/no-restricted-call-result-use';
+import rule from '../../../src/no-restricted-call-result-use';
 
-const instanceError = [{ message: RENDERSUBCOMPONENT_RETURN_ERROR }];
+const fetchError = [
+  {
+    message: `The result returned by 'fetch' is restricted from being used.`
+  }
+];
+const asyncThingError = [
+  {
+    message: `The result returned by 'asyncThing' is restricted from being used. Additional message.`
+  }
+];
 
-const options = ['fetch', 'asyncThing'];
+const options = [
+  'fetch',
+  { name: 'asyncThing', message: 'Additional message.' }
+];
 
 const ruleTester = new RuleTester();
 ruleTester.run('no-restricted-call-result-use', rule, {
@@ -43,68 +53,68 @@ ruleTester.run('no-restricted-call-result-use', rule, {
     {
       code: 'instance = fetch(something);',
       options,
-      errors: instanceError
+      errors: fetchError
     },
     {
       code: 'instance = asyncThing(something);',
       options,
-      errors: instanceError
+      errors: asyncThingError
     },
     {
       code: 'instance = view.fetch(something);',
       options,
-      errors: instanceError
+      errors: fetchError
     },
     {
       code: 'instance = long.chain().something.view.fetch(something);',
       options,
-      errors: instanceError
+      errors: fetchError
     },
     {
       code: 'view.instance = view.fetch(something);',
       options,
-      errors: instanceError
+      errors: fetchError
     },
     {
       code: 'view.instance = fetch(something);',
       options,
-      errors: instanceError
+      errors: fetchError
     },
     // Call Expression Argument
     {
       code: 'someFunction(view.fetch(something));',
       options,
-      errors: instanceError
+      errors: fetchError
     },
     // Member Access
     {
       code: 'view.fetch(something).someMember;',
       options,
-      errors: instanceError
+      errors: fetchError
     },
     {
       code: 'const {someMember} = view.fetch(something);',
       env: { es6: true },
       options,
-      errors: instanceError
+      errors: fetchError
     },
     {
       code: 'view.fetch(something).someMember();',
       options,
-      errors: instanceError
+      errors: fetchError
     },
     // Returned
     {
       code: '() => view.fetch(something);',
       env: { es6: true },
       options,
-      errors: instanceError
+      errors: fetchError
     },
     {
       code: '() => { return view.fetch(something); };',
       env: { es6: true },
       options,
-      errors: instanceError
+      errors: fetchError
     }
   ]
 });
