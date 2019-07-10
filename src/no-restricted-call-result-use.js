@@ -53,7 +53,7 @@ export default function(context) {
   };
 }
 
-// This piece We-written as `'no-restricted-properties': ... { property: 'reactSubComponents' }`
+// This piece re-written as `'no-restricted-properties': ... { property: 'reactSubComponents' }`
 // MemberExpression: function(node) {
 //   const prop = node.property;
 //   if (prop.type !== 'Identifier' || prop.name !== 'reactSubComponents') {
