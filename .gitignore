@@ -3,3 +3,4 @@ npm-debug.log
 /.history
 lib
 .DS_Store
+gusto-eslint-plugin-gusto*.tgz
