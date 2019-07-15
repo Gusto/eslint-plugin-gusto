@@ -3,7 +3,7 @@ function isIdentifier(node, name) {
 }
 
 function getPropertyName(node) {
-  const {property} = node;
+  const { property } = node;
   switch (property.type) {
   case 'Identifier':
     return property.name;
@@ -26,11 +26,13 @@ function globalPayrollProperties(context) {
   const exceptions = (context.options[0] || {}).exceptions || [];
 
   return {
-    'MemberExpression': function(node) {
+    MemberExpression: function(node) {
       if (isIdentifier(node.object, 'Payroll')) {
         const propertyName = getPropertyName(node);
         if (exceptions.indexOf(propertyName) < 0) {
-          const fullProperty = context.getSourceCode().getText(getRootMemberExpression(node));
+          const fullProperty = context
+            .getSourceCode()
+            .getText(getRootMemberExpression(node));
           context.report({
             node: node.property,
             message: `Must import/require Payroll property '${fullProperty}'.`
@@ -43,16 +45,16 @@ function globalPayrollProperties(context) {
 
 globalPayrollProperties.schema = [
   {
-    'type': 'object',
-    'properties': {
-      'exceptions': {
-        'type': 'array',
-        'items': {
-          'type': 'string'
+    type: 'object',
+    properties: {
+      exceptions: {
+        type: 'array',
+        items: {
+          type: 'string'
         }
       }
     },
-    'additionalProperties': false
+    additionalProperties: false
   }
 ];
 

@@ -18,7 +18,7 @@ function stringLiteralBlacklist(context) {
   }
 
   return {
-    'Literal': function(node) {
+    Literal: function(node) {
       if (typeof node.value === 'string') {
         const match = blacklistMatch(node.value);
         if (match) {
@@ -26,7 +26,7 @@ function stringLiteralBlacklist(context) {
         }
       }
     },
-    'TemplateElement': function(node) {
+    TemplateElement: function(node) {
       const match = blacklistMatch(node.value.cooked);
       if (match) {
         report(match, node.parent);
