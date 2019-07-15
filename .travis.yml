@@ -1,8 +1,7 @@
+dist: xenial
 language: node_js
 node_js:
   - '10'
-before_install:
-  - npm install -g yarn
 script:
   - yarn lint
   - yarn test
