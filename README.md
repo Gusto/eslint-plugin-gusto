@@ -1,4 +1,4 @@
-eslint-plugin-gusto
+eslint-plugin-gusto <img src="https://travis-ci.org/Gusto/eslint-plugin-gusto.svg?branch=master" />
 ===================
 
 Custom Gusto ESLint rules.
