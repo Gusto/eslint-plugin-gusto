@@ -7,8 +7,7 @@ function teamAnnotations(context) {
   const MISSION_REGEX = / @mission ([\w| ]*)/;
   function getMissionTag() {
     return comments.find(
-      comment =>
-        comment.loc.start.line === 1 && comment.value.match(MISSION_REGEX)
+      comment => comment.loc.start.line === 1 && comment.value.match(MISSION_REGEX),
     );
   }
 
@@ -19,7 +18,7 @@ function teamAnnotations(context) {
   const TEAM_REGEX = / @team ([\w| ]*)/;
   function getTeamTag() {
     return comments.find(
-      comment => comment.loc.start.line === 2 && comment.value.match(TEAM_REGEX)
+      comment => comment.loc.start.line === 2 && comment.value.match(TEAM_REGEX),
     );
   }
 
@@ -34,7 +33,7 @@ function teamAnnotations(context) {
         const report = {
           node: { loc: { start: { line: 1, column: 0 } } },
           message:
-            'A mission annotation is required at the top of the file (i.e. `# @mission Owning Mission`).'
+            'A mission annotation is required at the top of the file (i.e. `# @mission Owning Mission`).',
         };
         context.report(report);
       } else {
@@ -42,7 +41,7 @@ function teamAnnotations(context) {
         if (!isValid) {
           const report = {
             node: missionTag,
-            message: 'The mission annotation must be a valid mission.'
+            message: 'The mission annotation must be a valid mission.',
           };
           context.report(report);
         }
@@ -53,7 +52,7 @@ function teamAnnotations(context) {
         const report = {
           node: { loc: { start: { line: 2, column: 0 } } },
           message:
-            'A team annotation is required at the second line of the file (i.e. `# @team Owning Team`).'
+            'A team annotation is required at the second line of the file (i.e. `# @team Owning Team`).',
         };
         context.report(report);
       } else {
@@ -61,12 +60,12 @@ function teamAnnotations(context) {
         if (!isValid) {
           const report = {
             node: teamTag,
-            message: 'The team annotation must be a valid team.'
+            message: 'The team annotation must be a valid team.',
           };
           context.report(report);
         }
       }
-    }
+    },
   };
 }
 
@@ -77,18 +76,18 @@ teamAnnotations.schema = [
       missions: {
         type: 'array',
         items: {
-          type: 'string'
-        }
+          type: 'string',
+        },
       },
       teams: {
         type: 'array',
         items: {
-          type: 'string'
-        }
-      }
+          type: 'string',
+        },
+      },
     },
-    additionalProperties: false
-  }
+    additionalProperties: false,
+  },
 ];
 
 export default teamAnnotations;
