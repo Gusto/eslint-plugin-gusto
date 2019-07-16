@@ -15,14 +15,14 @@ export default function(context) {
     if (typeof callOption === 'string') {
       restrictedCallReturnsMap.set(
         callOption,
-        `The result returned by '${callOption}' is restricted from being used.`
+        `The result returned by '${callOption}' is restricted from being used.`,
       );
     } else {
       restrictedCallReturnsMap.set(
         callOption.name,
-        `The result returned by '${
-          callOption.name
-        }' is restricted from being used. ${callOption.message}`
+        `The result returned by '${callOption.name}' is restricted from being used. ${
+          callOption.message
+        }`,
       );
     }
   });
@@ -45,16 +45,15 @@ export default function(context) {
       // something.myBadFunction <== callee.property.name === 'myBadFunction'
       const nameMatch = restrictedCallReturnsMap.get(node.callee.name);
       const propertyMatch =
-        node.callee.property &&
-        restrictedCallReturnsMap.get(node.callee.property.name);
+        node.callee.property && restrictedCallReturnsMap.get(node.callee.property.name);
 
       const anyMatch = nameMatch || propertyMatch;
       if (anyMatch) {
         context.report({
           node: node,
-          message: anyMatch
+          message: anyMatch,
         });
       }
-    }
+    },
   };
 }
