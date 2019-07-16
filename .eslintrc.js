@@ -1,8 +1,8 @@
 module.exports = {
-  extends: 'gusto/base',
+  extends: 'gusto',
   env: {
-    'mocha': true,
-    'node': true
+    mocha: true,
+    node: true
   },
   rules: {}
 };
