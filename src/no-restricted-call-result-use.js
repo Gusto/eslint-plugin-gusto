@@ -18,11 +18,10 @@ export default function(context) {
         `The result returned by '${callOption}' is restricted from being used.`,
       );
     } else {
+      const { name, message } = callOption;
       restrictedCallReturnsMap.set(
-        callOption.name,
-        `The result returned by '${callOption.name}' is restricted from being used. ${
-          callOption.message
-        }`,
+        name,
+        `The result returned by '${name}' is restricted from being used. ${message}`,
       );
     }
   });
@@ -50,7 +49,7 @@ export default function(context) {
       const anyMatch = nameMatch || propertyMatch;
       if (anyMatch) {
         context.report({
-          node: node,
+          node,
           message: anyMatch,
         });
       }
