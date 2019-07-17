@@ -1,6 +1,6 @@
 {
   "name": "@gusto/eslint-plugin-gusto",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "description": "Custom Gusto ESLint rules",
   "repository": "Gusto/eslint-plugin-gusto",
   "main": "lib/index.js",
