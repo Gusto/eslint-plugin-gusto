@@ -1,6 +1,4 @@
 function teamAnnotations(context) {
-  const { missions, teams } = context.options[0] || {};
-
   const sourceCode = context.getSourceCode();
   const comments = sourceCode.getAllComments();
 
