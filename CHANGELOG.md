@@ -1,4 +1,10 @@
 # Change Log
+## 2.0.0 - 2019-08-12
+
+### Breaking Changes
+
+* Removed the ability to provide a list of valid teams and missions to the team annotations rule
+
 ## 1.2.0 - 2019-07-17
 
 ### Features
