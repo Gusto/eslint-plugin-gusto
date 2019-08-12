@@ -47,20 +47,6 @@ ruleTester.run('team-annotations', rule, {
     },
     {
       code: [
-        '// @mission Fake Mission',
-        '// @team Team'
-      ].join("\n"),
-      options,
-      env: {
-        es6: true
-      },
-      ecmaFeatures: {
-        jsx: true
-      },
-      errors: [{ message: "The mission annotation must be a valid mission." }]
-    },
-    {
-      code: [
         '',
         '// @team Team'
       ].join("\n"),
@@ -72,20 +58,6 @@ ruleTester.run('team-annotations', rule, {
         jsx: true
       },
       errors: [{ message: "A mission annotation is required at the top of the file (i.e. `# @mission Owning Mission`)." }]
-    },
-    {
-      code: [
-        '// @mission Mission',
-        '// @team Fake Team'
-      ].join("\n"),
-      options,
-      env: {
-        es6: true
-      },
-      ecmaFeatures: {
-        jsx: true
-      },
-      errors: [{ message: "The team annotation must be a valid team." }]
     },
     {
       code: [
