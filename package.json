@@ -1,8 +1,11 @@
 {
   "name": "@gusto/eslint-plugin-gusto",
-  "version": "2.0.0",
+  "version": "2.0.2",
   "description": "Custom Gusto ESLint rules",
   "repository": "Gusto/eslint-plugin-gusto",
+  "files": [
+    "/lib"
+  ],
   "main": "lib/index.js",
   "license": "UNLICENSED",
   "scripts": {
