@@ -23,7 +23,7 @@ function teamAnnotations(context) {
         const report = {
           node: { loc: { start: { line: 1, column: 0 } } },
           message:
-            'A mission annotation is required at the top of the file (i.e. `# @mission Owning Mission`).',
+            'A mission annotation is required at the top of the file (i.e. `// @mission Owning Mission`).',
         };
         context.report(report);
       }
@@ -33,7 +33,7 @@ function teamAnnotations(context) {
         const report = {
           node: { loc: { start: { line: 2, column: 0 } } },
           message:
-            'A team annotation is required at the second line of the file (i.e. `# @team Owning Team`).',
+            'A team annotation is required at the second line of the file (i.e. `// @team Owning Team`).',
         };
         context.report(report);
       }
