@@ -4,3 +4,6 @@ npm-debug.log
 lib
 .DS_Store
 gusto-eslint-plugin-gusto*.tgz
+
+# built CircleCI configs
+.circleci/processed-config.yml
