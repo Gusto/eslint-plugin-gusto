@@ -9,6 +9,7 @@
   "main": "lib/index.js",
   "license": "UNLICENSED",
   "scripts": {
+    "circle:execute": "circleci config process ./.circleci/config.yml > .circleci/processed-config.yml && circleci local execute -c .circleci/processed-config.yml --job",
     "test": "mocha --require @babel/register tests/**/*.js",
     "build": "babel -d lib src",
     "lint": "eslint .",
