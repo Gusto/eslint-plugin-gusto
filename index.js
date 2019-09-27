@@ -9,7 +9,14 @@ module.exports = {
     'import/no-extraneous-dependencies': [
       'error',
       {
-        devDependencies: ['**/{spec,test}/**', '**/*_spec.{js,jsx}', '**/webpack.config.js'],
+        devDependencies: [
+          '**/{spec,test}/**',
+          '**/__tests__/**',
+          '**/__mocks__/**',
+          '**/*_spec.{js,jsx,ts,tsx}',
+          '**/*.{spec,test}.{js,jsx,ts,tsx}',
+          '**/webpack.config.js',
+        ],
         optionalDependencies: false,
       },
     ],
