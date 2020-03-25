@@ -6,10 +6,10 @@ module.exports = {
   useTabs: false,
   semi: true,
   singleQuote: true, // default: false
-  trailingComma: 'all', // default: 'none'
+  trailingComma: 'all', // default: 'es5'
   bracketSpacing: true,
   jsxBracketSameLine: false,
-  arrowParens: 'avoid',
+  arrowParens: 'avoid', // default: 'always'
   rangeStart: 0,
   rangeEnd: Infinity,
   requirePragma: false,
