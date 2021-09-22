@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 
+## 12.1.0 - 2021-09-21
+- Updated rules for `jsx-a11y/label-has-associated-control` to override default config.
+  - Support associating `label` with a sibling `input`
+
 ## 12.0.1 - 2021-09-11
 
 - Fix: update deprecated configuration option `jsxBracketSameLine` => `bracketSameLine`
