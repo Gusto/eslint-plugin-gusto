@@ -22,9 +22,12 @@ module.exports = {
     ],
     // rule deprecated in favor of jsx-a11y/label-has-associated-control
     'jsx-a11y/label-has-for': 'off',
-    'jsx-a11y/label-has-associated-control':['error', {
-      assert: 'either',
-    }],
+    'jsx-a11y/label-has-associated-control': [
+      'error',
+      {
+        assert: 'either',
+      },
+    ],
     'react/destructuring-assignment': 'off',
   },
 
