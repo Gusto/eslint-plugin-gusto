@@ -10,5 +10,5 @@ export const rules = {
   'no-restricted-call-result-use': noRestrictedCallResultUse,
   'string-literal-blacklist': stringLiteralBlacklist,
   'team-annotations': teamAnnotations,
-  'prefer-typescript-over-javascript': preferTypescriptOverJavascript
+  'prefer-typescript-over-javascript': preferTypescriptOverJavascript,
 };
