@@ -30,6 +30,9 @@ module.exports = {
     ],
     'react/destructuring-assignment': 'off',
     'react/function-component-definition': 'off',
+
+    // There are plenty of reasons to not use full deps so we go with the plugin-recommended value here
+    'react-hooks/exhaustive-deps': 'warn',
   },
 
   settings: {
