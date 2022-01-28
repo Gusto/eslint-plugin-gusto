@@ -28,6 +28,7 @@ module.exports = {
         assert: 'either',
       },
     ],
+    'no-restricted-syntax': 'off',
     'react/destructuring-assignment': 'off',
     'react/function-component-definition': 'off',
 
