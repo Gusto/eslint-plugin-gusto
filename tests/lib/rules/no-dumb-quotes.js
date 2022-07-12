@@ -3,7 +3,8 @@ import { RuleTester } from 'eslint';
 
 const ruleTester = new RuleTester();
 const env = { es6: true }
-const stringForTemplate = ''
+const doubleQuoteError = 'Gusto uses smartquotes, replace with open quote “ option-[ and close quote ” option-shift-[ on a mac';
+const singleQuoteError = 'Gusto uses smartquotes, replace with apostrophe ’ option-shift-] on a mac';
 
 ruleTester.run('no-dumb-quotes', rule, {
   valid: [
@@ -25,28 +26,28 @@ ruleTester.run('no-dumb-quotes', rule, {
   invalid: [
     {
       code: `var copy = "Maybe I don't"`,
-      errors: [{ message: "Use an apostrophe (’) instead of a foot mark (')", type: 'Literal' }],
+      errors: [{ message: singleQuoteError, type: 'Literal' }],
     },
     {
       code: `var copy = 'have anything "interesting" to say'`,
-      errors: [{ message: 'Use quotes (“…”) instead of inch marks ("…")', type: 'Literal' }],
+      errors: [{ message: doubleQuoteError, type: 'Literal' }],
     },
     {
       code: "const value = 'template literal'; const template = `This '${value}' has 'dumb' single quotes`",
       env,
-      errors: [{ message: "Use an apostrophe (’) instead of a foot mark (')", type: 'TemplateLiteral' }],
+      errors: [{ message: singleQuoteError, type: 'TemplateLiteral' }],
     },
     {
-      code: 'const value = "template literal"; const template = `This "${value}" has "dumb" single quotes`',
+      code: 'const value = "template literal"; const template = `This "${value}" has "dumb" double quotes`',
       env,
-      errors: [{ message: 'Use quotes (“…”) instead of inch marks ("…")', type: 'TemplateLiteral' }],
+      errors: [{ message: doubleQuoteError, type: 'TemplateLiteral' }],
     },
     {
       code: 'const value = "template literal"; const template = `This \'${value}\' has both types of "dumb" quotes`',
       env,
       errors: [
-        { message: "Use an apostrophe (’) instead of a foot mark (')", type: 'TemplateLiteral' },
-        { message: 'Use quotes (“…”) instead of inch marks ("…")', type: 'TemplateLiteral' },
+        { message: singleQuoteError, type: 'TemplateLiteral' },
+        { message: doubleQuoteError, type: 'TemplateLiteral' },
       ],
     },
   ]
