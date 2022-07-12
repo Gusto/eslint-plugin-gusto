@@ -10,5 +10,19 @@ export default function(context) {
         context.report(node, 'Use quotes (“…”) instead of inch marks ("…")');
       }
     },
+    TemplateLiteral(node) {
+      const { hasFootMark, hasInchMark } = node.quasis.reduce((booles, quasi) => ({
+        hasFootMark: booles.hasFootMark || /\D'/.test(quasi.value.cooked),
+        hasInchMark: booles.hasInchMark || /\D"/.test(quasi.value.cooked),
+      }), {});
+
+      if (hasFootMark) {
+        context.report(node, `Use an apostrophe (’) instead of a foot mark (')`);
+      }
+
+      if (hasInchMark) {
+        context.report(node, 'Use quotes (“…”) instead of inch marks ("…")');
+      }
+    },
   };
 }
