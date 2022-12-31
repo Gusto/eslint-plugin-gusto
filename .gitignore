@@ -7,3 +7,4 @@ gusto-eslint-plugin-gusto*.tgz
 
 # built CircleCI configs
 .circleci/processed-config.yml
+.git/
