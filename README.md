@@ -134,3 +134,4 @@ This rule needs set of strings to blacklist, listed after the warning level:
 ```js
 "string-literal-blacklist": [2, <array of strings>]
 ```
+test
