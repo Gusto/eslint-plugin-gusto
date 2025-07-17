@@ -1,3 +1,7 @@
+# ⚠️ DEPRECATED ⚠️
+
+This plugin is no longer supported.
+
 # eslint-plugin-gusto [![CircleCI](https://circleci.com/gh/Gusto/eslint-plugin-gusto.svg?style=shield)](https://circleci.com/gh/Gusto/eslint-plugin-gusto)
 
 Custom Gusto ESLint rules.
